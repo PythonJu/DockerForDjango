@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+  django:
+    build: .
+    ports:
+        - "8000:8000"
+    volumes:
+      - .:/code
+  django-db:
+    image: "mysql:5.7"
+    environment:
+        - "MYSQL_ROOT_PASSWORD=root"
+        - "MYSQL_DATABASE=mysitedb"
+    volumes:
+      - ./mysqldata:/var/lib/mysql
